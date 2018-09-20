@@ -50,17 +50,23 @@ fibos.load("net", {
 	"p2p-listen-endpoint": "0.0.0.0:9870"
 });
 
+var chain_config = {
+	"contracts-console": true,
+	'chain-state-db-size-mb': 8 * 1024,
+	// "delete-all-blocks": true
+};
+
+if (!fs.exists(fibos.data_dir) && !fs.exists(fibos.config_dir)) {
+	chain_config['genesis-json'] = "genesis.json";
+}
+
+
 fibos.load("producer", {
 	'enable-stale-production': true,
 	'max-transaction-time': 3000
 });
 
-fibos.load("chain", {
-	"contracts-console": true,
-	'chain-state-db-size-mb': 8 * 1024,
-	// "delete-all-blocks": true,
-	'genesis-json': 'genesis.json'
-});
+fibos.load("chain", chain_config);
 fibos.load("chain_api");
 
 
