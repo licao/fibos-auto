@@ -22,12 +22,12 @@ fibos.config_dir = config.config_dir;
 fibos.data_dir = config.data_dir;
 
 var p2p_peer_address = [
-	"se-p2p.fibos.io",
-	"sl-p2p.fibos.io",
-	"to-p2p.fibos.io",
-	"ca-p2p.fibos.io",
-	"ln-p2p.fibos.io",
-	"va-p2p.fibos.io",
+	"se-p2p.fibos.io:9870",
+	"sl-p2p.fibos.io:9870",
+	"to-p2p.fibos.io:9870",
+	"ca-p2p.fibos.io:9870",
+	"ln-p2p.fibos.io:9870",
+	"va-p2p.fibos.io:9870",
 	"seed.bitze.site:9870",
     "p2p-mainnet.fibos123.com:9977",
     "api.fibosgenesis.com:9870",
