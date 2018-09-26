@@ -9,5 +9,6 @@ steps:
 
 tips:
 	
-	netstat -aln|grep -c ':9870'    //find how many people connet you
+	netstat -aln|grep  '内网ip:9870' | grep -c 'ESTABLISHED'    //find how many people connet you
+
 

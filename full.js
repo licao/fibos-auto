@@ -68,7 +68,9 @@ fibos.load("producer", {
 
 fibos.load("chain", chain_config);
 fibos.load("chain_api");
-fibos.load("history");
+fibos.load("history", {
+	"filter-on": "*"
+});
 fibos.load("history_api");
 
 fibos.start();
