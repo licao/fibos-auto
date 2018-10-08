@@ -49,7 +49,7 @@ var p2p_peer_address = [
     "seed.fibospubg.top:9870",
     "seed.franconofurd.top:9870",
     "ppray.com:9870",
-    "p2p.fophoenix.com:9870"
+    "p2p.fophoenix.com:9870",
     "seed.fiboso.com:9965",
     "fibos.qubitfund.com:9870"
 ];
