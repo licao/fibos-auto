@@ -68,7 +68,7 @@ if (!fs.exists(fibos.data_dir) && !fs.exists(fibos.config_dir)) {
 
 
 fibos.load("producer", {
-	'enable-stale-production': true,
+	// 'enable-stale-production': true,
 	'max-transaction-time': 3000
 });
 

@@ -82,7 +82,7 @@ fibos.load("net", {
 
 fibos.load("producer", {
 	'producer-name': producername,
-	'enable-stale-production': true,
+	// 'enable-stale-production': true,
 	'max-transaction-time': 3000,
 	'private-key': JSON.stringify([public_key, private_key])
 });

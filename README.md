@@ -8,7 +8,8 @@ steps:
 	4. fibos seed.js // seed node start
 
 tips:
-	
+	config.json  // where your config.ini and blockdata your can change it 
+
 	netstat -aln|grep  '内网ip:9870' | grep -c 'ESTABLISHED'    //find how many people connet you
 
 
