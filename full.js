@@ -22,7 +22,7 @@ fibos.load("http", {
 
 
 fibos.load("net", {
-	"p2p-peer-address": fibos.p2p_peer_address,
+	"p2p-peer-address": config.p2p_peer_address,
 	"max-clients": 100,
 	"p2p-listen-endpoint": "0.0.0.0:9870"
 });
@@ -44,7 +44,7 @@ fibos.load("producer", {
 
 fibos.load("chain", chain_config);
 fibos.load("chain_api");
-fibos.load("history");
-fibos.load("history_api");
+// fibos.load("history");
+// fibos.load("history_api");
 
 fibos.start();
