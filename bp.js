@@ -36,7 +36,7 @@ console.notice("config_dir:", fibos.config_dir);
 console.notice("data_dir:", fibos.data_dir);
 
 fibos.load("http", {
-	"http-server-address": "127.0.0.1:8870",
+	"http-server-address": "0.0.0.0:8870",
 	"access-control-allow-origin": "*",
 	"http-validate-host": false,
 	"verbose-http-errors": true
