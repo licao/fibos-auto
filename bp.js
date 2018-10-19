@@ -43,6 +43,7 @@ fibos.load("http", {
 });
 
 fibos.load("net", {
+	"max-clients": 100,
 	"p2p-peer-address": config.p2p_peer_address,
 	"p2p-listen-endpoint": "0.0.0.0:9870"
 });
