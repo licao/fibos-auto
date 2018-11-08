@@ -55,7 +55,7 @@ if (stop_block_num) {
 	fibos.load("emitter");
 	fibos.on('action', function(at) {
 		var now_num = at.block_num.toString();
-		if (now_num > stop_block_num - 2000) console.log(now_num);
+		if (now_num > stop_block_num) console.log(now_num);
 		if (now_num == stop_block_num) {
 			fibos.stop();
 		}
