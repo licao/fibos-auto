@@ -26,7 +26,7 @@ function endSeed() {
 
 function start() {
 	process.run('rm', ['-rf', "./blockData/a/*"]);
-	process.run('cp', ['./blockData/data/*', "./blockData/a"]);
+	process.run('cp', ['-rf', './blockData/data/*', "./blockData/a"]);
 }
 
 
