@@ -42,6 +42,7 @@ function syncData() {
 		console.log("now head_block_num==> ", a.head_block_num);
 		if (a.head_block_num == last_num) {
 			endSeed();
+			start();
 			runnum.nownum = blocknums.pop();
 			runnum.runed.push(runnum.nownum)
 			fs.writeFile('runnum.json', JSON.stringify(runnum));
