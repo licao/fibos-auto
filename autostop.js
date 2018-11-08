@@ -65,6 +65,6 @@ runSeed('a', 8871, runnum.nownum);
 
 coroutine.start(
 	function() {
-		setInterval(syncData, 20 * 1000)
+		setInterval(syncData, 40 * 1000)
 	}
 )
