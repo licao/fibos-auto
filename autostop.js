@@ -10,7 +10,7 @@ var runnum = require('./runnum');
 var runed = runnum.runed;
 
 function runSeed(name, port, stopnum) {
-	var cmd = ['stopseed.js', name, port];
+	var cmd = ['a.js', name, port];
 	if (stopnum) {
 		cmd.push(stopnum)
 	}
