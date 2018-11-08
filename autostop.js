@@ -25,8 +25,8 @@ function endSeed() {
 }
 
 function start() {
-	process.run('rm', ['-rf', "./blockData/a/*"]);
-	process.run('cp', ['-rf', './blockData/data/*', "./blockData/a"]);
+	process.run('rm', ['-rf', "./blockData/a"]);
+	process.run('cp', ['-rf', './blockData/data', "./blockData/a"]);
 }
 
 
@@ -57,13 +57,13 @@ function syncData() {
 }
 
 start()
-runnum.nownum = blocknums.pop();
-runnum.runed.push(runnum.nownum)
-fs.writeFile('runnum.json', JSON.stringify(runnum));
-runSeed('a', 8871, runnum.nownum);
+// runnum.nownum = blocknums.pop();
+// runnum.runed.push(runnum.nownum)
+// fs.writeFile('runnum.json', JSON.stringify(runnum));
+// runSeed('a', 8871, runnum.nownum);
 
-coroutine.start(
-	function() {
-		setInterval(syncData, 20 * 1000)
-	}
-)
+// coroutine.start(
+// 	function() {
+// 		setInterval(syncData, 20 * 1000)
+// 	}
+// )
