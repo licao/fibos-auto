@@ -39,11 +39,11 @@ function syncData() {
 			json: {}
 		});
 		const a = rep.json();
-		console.log("now head_block_num==> ", a.head_block_num);
+		console.log("block_num==> ", runnum.nownum, a.head_block_num, blocknums.length);
 		if (a.head_block_num == last_num) {
 			endSeed();
 			start();
-			runnum.nownum = blocknums.pop();
+			runnum.nownum = blocknums.shift();
 			runnum.runed.push(runnum.nownum)
 			fs.writeFile('runnum.json', JSON.stringify(runnum));
 			runSeed('a', 8871, runnum.nownum);
@@ -58,7 +58,7 @@ function syncData() {
 }
 
 start()
-runnum.nownum = blocknums.pop();
+runnum.nownum = blocknums.shift();
 runnum.runed.push(runnum.nownum)
 fs.writeFile('runnum.json', JSON.stringify(runnum));
 runSeed('a', 8871, runnum.nownum);
