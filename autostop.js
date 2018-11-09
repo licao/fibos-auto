@@ -5,7 +5,9 @@ var fs = require('fs');
 
 let p;
 
-var blocknums = require('./blocknums');
+var bname = "blocknums";
+
+var blocknums = require('./' + bname);
 var runnum = require('./runnum');
 var runed = runnum.runed;
 
@@ -33,7 +35,10 @@ function start() {
 var last_num = 0;
 
 function syncData() {
-
+	if (last_num > 11770236) {
+		console.log('over the bug , blocknum is ', runnum.nownum);
+		return;
+	}
 	try {
 		const rep = http.post("http://127.0.0.1:8871/v1/chain/get_info", {
 			json: {}
@@ -42,10 +47,12 @@ function syncData() {
 		console.log("block_num==> ", runnum.nownum, a.head_block_num, blocknums.length);
 		if (a.head_block_num == last_num) {
 			endSeed();
+			coroutine.sleep(4000);
 			start();
 			runnum.nownum = blocknums.shift();
 			runnum.runed.push(runnum.nownum)
 			fs.writeFile('runnum.json', JSON.stringify(runnum));
+			fs.writeFile(bname + '.json', JSON.stringify(blocknums));
 			runSeed('a', 8871, runnum.nownum);
 		} else {
 			last_num = a.head_block_num;
@@ -61,6 +68,7 @@ start()
 runnum.nownum = blocknums.shift();
 runnum.runed.push(runnum.nownum)
 fs.writeFile('runnum.json', JSON.stringify(runnum));
+fs.writeFile(bname + '.json', JSON.stringify(blocknums));
 runSeed('a', 8871, runnum.nownum);
 
 coroutine.start(
