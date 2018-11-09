@@ -36,7 +36,7 @@ fibos.load("net", {
 
 var chain_config = {
 	"contracts-console": true,
-	//'chain-state-db-size-mb': 8 * 1024,
+	'chain-state-db-size-mb': 8 * 1024,
 	// "delete-all-blocks": true
 };
 
