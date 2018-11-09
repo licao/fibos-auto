@@ -10,7 +10,7 @@ var runnum = require('./runnum');
 var runed = runnum.runed;
 
 function runSeed(name, port, stopnum) {
-	var cmd = ['a.js', name, port];
+	var cmd = ['stopseed.js', name, port];
 	if (stopnum) {
 		cmd.push(stopnum)
 	}
@@ -20,7 +20,7 @@ function runSeed(name, port, stopnum) {
 function endSeed() {
 	if (p) {
 		console.log('kill fibos');
-		p.kill(15);
+		pkill.(15);
 	}
 }
 
