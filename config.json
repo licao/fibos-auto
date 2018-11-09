@@ -1,6 +1,6 @@
 {
-	"config_dir": "./blockData/data",
-	"data_dir": "./blockData/data",
+	"config_dir": "/blockData/data",
+	"data_dir": "/blockData/data",
 	"backup_dir": "./blockData/backup",
 	"auto_dir": "./blockData/",
 	"p2p_peer_address": [
