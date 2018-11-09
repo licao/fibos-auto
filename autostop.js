@@ -20,7 +20,7 @@ function runSeed(name, port, stopnum) {
 function endSeed() {
 	if (p) {
 		console.log('kill fibos');
-		pkill.(15);
+		p.kill(15);
 	}
 }
 
