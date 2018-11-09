@@ -29,7 +29,7 @@ fibos.load("http", {
 
 
 fibos.load("net", {
-	"p2p-peer-address": config.p2p_peer_address,
+	"p2p-peer-address": ["127.0.0.1:9870"],
 	"max-clients": 100,
 	"p2p-listen-endpoint": "0.0.0.0:" + (port + 1000)
 });
