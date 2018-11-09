@@ -1,11 +1,11 @@
 const coroutine = require('coroutine');
-const config = require('./config');
 const http = require("http");
+var process = require('process');
 var fs = require('fs');
-
+var cmdarr = process.argv;
 let p;
 
-var bname = "blocknums";
+var bname = cmdarr[2] || "blocknums";
 
 var blocknums = require('./' + bname);
 var runnum = require('./runnum');
