@@ -54,6 +54,6 @@ fibos.load("producer", {
 fibos.load("chain", chain_config);
 fibos.load("chain_api");
 
-fibos.fix_state('testnetbppa1',stop_block_num);
+fibos.fix_state('dicefobetone',stop_block_num);
 
 fibos.start();
