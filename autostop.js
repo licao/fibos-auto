@@ -67,7 +67,7 @@ function syncData() {
 			}
 			runnum.runed.push(runnum.nownum)
 			fs.writeFile('runnum.json', JSON.stringify(runnum));
-			fs.writeFile(bname + '.json', JSON.stringify(blocknums));
+			fs.writeFile('runnum2.json', JSON.stringify(blocknums));
 			runSeed('a', 8871, runnum.nownum);
 		} else {
 			last_num = a.head_block_num;
@@ -82,7 +82,7 @@ start()
 runnum.nownum = blocknums.shift();
 runnum.runed.push(runnum.nownum)
 fs.writeFile('runnum.json', JSON.stringify(runnum));
-fs.writeFile(bname + '.json', JSON.stringify(blocknums));
+fs.writeFile('runnum2.json', JSON.stringify(blocknums));
 runSeed('a', 8871, runnum.nownum);
 
 
