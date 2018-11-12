@@ -57,7 +57,7 @@ function syncData() {
 		runinfo[Number(runnum.nownum)] = a.head_block_num;
 		fs.writeFile('runinfo.json', JSON.stringify(runinfo));
 		if (a.head_block_num == last_num && a.head_block_num < 11770237) {
-			console.log("block_num==2> 不动了 大于11770237");
+			console.log("block_num==2> 不动了 小于11770237");
 			coroutine.sleep(4000);
 			start();
 			runnum.nownum = blocknums.shift();
