@@ -5,11 +5,16 @@ var fs = require('fs');
 var cmdarr = process.argv;
 let p;
 
-var bname = cmdarr[2] || "blocknums";
+var all = require('./check');
 
-var blocknums = require('./' + bname);
+var start_num = Number(cmdarr[2]) || 0;
+
+var end_num = Number(cmdarr[3]) || (start_num + 100);
+
+var blocknums = all.slice(start_num - 1, end_num);
 var runnum = require('./runnum');
 var runed = runnum.runed;
+
 
 function runSeed(name, port, stopnum) {
 	var cmd = ['stopseed.js', name, port];
@@ -31,25 +36,32 @@ function start() {
 	process.run('cp', ['-rf', './blockData/data', "./blockData/a"]);
 }
 
+// rm -rf ./blockData/a
+// cp -rf ./blockData/data ./blockData/a
 
 var last_num = 0;
+var runinfo = {};
+var errornum = 0;
 
 function syncData() {
-	if (last_num > 11770236) {
-		console.log('over the bug , blocknum is ', runnum.nownum);
-		return;
-	}
+
 	try {
 		const rep = http.post("http://127.0.0.1:8871/v1/chain/get_info", {
 			json: {}
 		});
 		const a = rep.json();
 		console.log("block_num==> ", runnum.nownum, a.head_block_num, blocknums.length);
+		runinfo[Number(runnum.nownum)] = a.head_block_num;
+		fs.writeFile('runinfo.json', JSON.stringify(runinfo));
 		if (a.head_block_num == last_num) {
-			endSeed();
+
 			coroutine.sleep(4000);
 			start();
 			runnum.nownum = blocknums.shift();
+			if (!runnum.nownum) {
+				console.log("block_num==> ", runnum.nownum, a.head_block_num, blocknums.length);
+				return;
+			}
 			runnum.runed.push(runnum.nownum)
 			fs.writeFile('runnum.json', JSON.stringify(runnum));
 			fs.writeFile(bname + '.json', JSON.stringify(blocknums));
@@ -58,8 +70,7 @@ function syncData() {
 			last_num = a.head_block_num;
 		}
 	} catch (e) {
-		console.log('stop now')
-		runSeed('a', 8871, '');
+		console.log(e);
 	}
 
 }
@@ -71,8 +82,5 @@ fs.writeFile('runnum.json', JSON.stringify(runnum));
 fs.writeFile(bname + '.json', JSON.stringify(blocknums));
 runSeed('a', 8871, runnum.nownum);
 
-coroutine.start(
-	function() {
-		setInterval(syncData, 40 * 1000)
-	}
-)
+
+setInterval(syncData, 60 * 1000)

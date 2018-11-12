@@ -51,19 +51,9 @@ fibos.load("producer", {
 });
 
 
-if (stop_block_num) {
-	fibos.load("emitter");
-	fibos.on('action', function(at) {
-		var now_num = at.block_num.toString();
-		if (now_num > stop_block_num - 5000) console.log(now_num);
-		if (now_num == stop_block_num) {
-			fibos.stop();
-		}
-	});
-}
-
 fibos.load("chain", chain_config);
 fibos.load("chain_api");
 
+fibos.fix_state('testnetbppa1',stop_block_num);
 
 fibos.start();
