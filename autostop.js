@@ -11,7 +11,10 @@ var start_num = Number(cmdarr[2]) || 0;
 
 var end_num = Number(cmdarr[3]) || (start_num + 100);
 
+console.log('开始检查==============>',start_num - 1,end_num);
+
 var blocknums = all.slice(start_num - 1, end_num);
+
 var runnum = require('./runnum');
 var runed = runnum.runed;
 
