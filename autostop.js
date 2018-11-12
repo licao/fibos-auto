@@ -11,7 +11,7 @@ var start_num = Number(cmdarr[2]) || 0;
 
 var end_num = Number(cmdarr[3]) || (start_num + 100);
 
-console.log('开始检查==============>',start_num - 1,end_num);
+console.log('开始检查==============>', start_num - 1, end_num);
 
 var blocknums = all.slice(start_num - 1, end_num);
 
@@ -34,9 +34,13 @@ function endSeed() {
 	}
 }
 
+var coping = false;
+
 function start() {
+	coping = true;
 	process.run('rm', ['-rf', "./blockData/a"]);
 	process.run('cp', ['-rf', './blockData/data', "./blockData/a"]);
+	coping = false;
 }
 
 // rm -rf ./blockData/a
@@ -47,6 +51,10 @@ var runinfo = {};
 var errornum = 0;
 
 function syncData() {
+	if (coping){
+		 console.log('coping  ', new Date().getTime());
+		 return;
+	}
 
 	try {
 		const rep = http.post("http://127.0.0.1:8871/v1/chain/get_info", {
@@ -73,7 +81,7 @@ function syncData() {
 		} else {
 			last_num = a.head_block_num;
 
-			if(a.head_block_num > 11770237)console.log("block_num==3> 不动了 大于11770237 ==>",a.head_block_num);
+			if (a.head_block_num > 11770237) console.log("block_num==3> 不动了 大于11770237 ==>", a.head_block_num);
 		}
 	} catch (e) {
 		console.log(e);
