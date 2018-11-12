@@ -56,8 +56,9 @@ function syncData() {
 		console.log("block_num==1 > ", runnum.nownum, a.head_block_num, blocknums.length);
 		runinfo[Number(runnum.nownum)] = a.head_block_num;
 		fs.writeFile('runinfo.json', JSON.stringify(runinfo));
-		if (a.head_block_num == last_num && a.head_block_num < 11770237) {
+		if (a.head_block_num == last_num && a.head_block_num < 11770238) {
 			console.log("block_num==2> 不动了 小于11770237");
+			endSeed();
 			coroutine.sleep(4000);
 			start();
 			runnum.nownum = blocknums.shift();
@@ -71,6 +72,8 @@ function syncData() {
 			runSeed('a', 8871, runnum.nownum);
 		} else {
 			last_num = a.head_block_num;
+
+			if(a.head_block_num > 11770237)console.log("block_num==3> 不动了 大于11770237 ==>",a.head_block_num);
 		}
 	} catch (e) {
 		console.log(e);
