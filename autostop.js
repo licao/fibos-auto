@@ -42,7 +42,7 @@ function start() {
 	var t = new Date().getTime();
 	console.log("cp start=>", t);
 	process.run('rm', ['-rf', "./blockData/a"]);
-	process.run('cp', ['-rf', './blockData/data', "./blockData/a"]);
+	process.run('cp', ['-rf', '../data', "./blockData/a"]);
 	console.log('cp time =>', new Date().getTime() - t);
 	coping = false;
 }
