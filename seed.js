@@ -22,7 +22,8 @@ fibos.load("http", {
 fibos.load("net", {
 	"p2p-peer-address": config.p2p_peer_address,
 	"max-clients": 100,
-	"p2p-listen-endpoint": "0.0.0.0:9870"
+	"p2p-listen-endpoint": "0.0.0.0:9870",
+	"p2p-max-nodes-per-host": 20
 });
 
 var chain_config = {
