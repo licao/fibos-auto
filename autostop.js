@@ -38,8 +38,11 @@ var coping = false;
 
 function start() {
 	coping = true;
+	var t = new Date().getTime();
+	console.log("cp start=>", t);
 	process.run('rm', ['-rf', "./blockData/a"]);
 	process.run('cp', ['-rf', './blockData/data', "./blockData/a"]);
+	console.log('cp time =>', new Date().getTime() - t);
 	coping = false;
 }
 
@@ -51,9 +54,9 @@ var runinfo = {};
 var errornum = 0;
 
 function syncData() {
-	if (coping){
-		 console.log('coping  ', new Date().getTime());
-		 return;
+	if (coping) {
+		console.log('coping  ', new Date().getTime());
+		return;
 	}
 
 	try {
