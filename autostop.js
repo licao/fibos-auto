@@ -18,6 +18,7 @@ var blocknums = all.slice(start_num - 1, end_num);
 var runnum = require('./runnum');
 var runed = runnum.runed;
 
+var checkhprot = Number(cmdarr[4]) || 8871;
 
 function runSeed(name, port, stopnum) {
 	var cmd = ['stopseed.js', name, port];
@@ -60,9 +61,9 @@ function syncData() {
 	}
 
 	try {
-		const rep = http.post("http://127.0.0.1:8871/v1/chain/get_info", {
+		const rep = http.post("http://127.0.0.1:" + checkhprot + "/v1/chain/get_info", {
 			json: {}
-		});
+		});	
 		const a = rep.json();
 		console.log("block_num==1 > ", runnum.nownum, a.head_block_num, blocknums.length);
 		runinfo[Number(runnum.nownum)] = a.head_block_num;
@@ -80,7 +81,7 @@ function syncData() {
 			runnum.runed.push(runnum.nownum)
 			fs.writeFile('runnum.json', JSON.stringify(runnum));
 			fs.writeFile('runnum2.json', JSON.stringify(blocknums));
-			runSeed('a', 8871, runnum.nownum);
+			runSeed('a', checkhprot, runnum.nownum);
 		} else {
 			last_num = a.head_block_num;
 
@@ -97,7 +98,7 @@ runnum.nownum = blocknums.shift();
 runnum.runed.push(runnum.nownum)
 fs.writeFile('runnum.json', JSON.stringify(runnum));
 fs.writeFile('runnum2.json', JSON.stringify(blocknums));
-runSeed('a', 8871, runnum.nownum);
+runSeed('a', checkhprot	, runnum.nownum);
 
 
 setInterval(syncData, 60 * 1000)
